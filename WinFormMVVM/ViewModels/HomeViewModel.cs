@@ -11,15 +11,15 @@ namespace WinFormMVVM.ViewModels
 	{
         public HomeViewModel()
 		{
-            var okCmdObs = this.WhenAny(vm => vm.EnteredText,
-                s => !string.IsNullOrWhiteSpace(s.Value));
-
-
-            //var OKCmdObs = this.WhenAny(vm => vm.EnteredText,
-            //    s => (s.Value == "123"));
-
-			OKCmd = ReactiveCommand.Create(okCmdObs);
-			OKCmd.Subscribe(_=> Status = EnteredText + " is saved.");
+		   //Define conditions
+                   var okCmdObs = this.WhenAny(vm => vm.EnteredText,
+                   s => !string.IsNullOrWhiteSpace(s.Value));
+                   
+                   //Create conditions
+		   OKCmd = ReactiveCommand.Create(okCmdObs);
+		   
+		   //Update Status
+		   OKCmd.Subscribe(_=> Status = EnteredText + " is saved.");
 		}
 
 		string ModelString;
